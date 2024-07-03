@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ListElementView: View {
-	@Bindable var item: Item
+	let item: Item
 	
     var body: some View {
 		Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")

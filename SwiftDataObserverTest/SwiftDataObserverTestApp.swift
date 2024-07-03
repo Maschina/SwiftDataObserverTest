@@ -20,7 +20,6 @@ struct SwiftDataObserverTestApp: App {
 		
 		do {
 			let container = try ModelContainer(for: schema, configurations: [modelConfiguration])
-			container.mainContext.undoManager = UndoManager()
 			return container
 		} catch {
 			fatalError("Could not create ModelContainer: \(error)")
@@ -31,9 +30,6 @@ struct SwiftDataObserverTestApp: App {
         WindowGroup {
             ContentView()
         }
-		.commands {
-			AppCommands()
-		}
 		.modelContainer(Self.persistent)
     }
 }

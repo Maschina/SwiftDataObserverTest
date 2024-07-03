@@ -10,6 +10,7 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
+	@Environment(\.undoManager) var undoManager
     @Query private var items: [Item]
 	@State private var selectedItems: Set<Item> = []
 
@@ -39,6 +40,9 @@ struct ContentView: View {
         }
 		.onDeleteCommand {
 			deleteSelectedItems()
+		}
+		.onChange(of: undoManager, initial: true) {
+			modelContext.undoManager = undoManager
 		}
     }
 
